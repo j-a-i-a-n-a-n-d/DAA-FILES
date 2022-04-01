@@ -1,32 +1,40 @@
-#include<bits/stdc++.h>
 #include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
-void binary_function_2(int size1)
-{
-    vector<int> arr(size1,0); //sorted array 
-    int a;
-    for (int i=0;i<arr.size();i++)
-    {
-        cin>>a;
-        arr.push_back(a);
-    }
-    for(int i=0;i<size1-2;i++)
-    {
-        if (arr[i]+arr[i+1]==arr[i+2])
-        {
-            int count=0;
-            cout<<i<<" "<<i+1<<i+2;
-        }
-    }
-}
-int main()
-{
+
+int main(){
     int t;
     cin>>t;
-    for(int i=0;i<t;i++)
-    {
-        int l;
-        cin>>l;
-        binary_function_2(l);
+    while(t--){
+        int n;
+        cin>>n;
+        vector<int> num;
+        for(int i=0; i<n; i++)
+        {
+             int x;
+             cin>>x;
+             num.push_back(x);
+        }
+         int k=0;
+         int l=0,r=0;
+         int flag = 1;
+         for( k=n-1;k>1;k--){
+              l=0;
+              r=k-1;
+              while(l < r){
+                   if(num[l] + num[r] == num[k]){
+                        cout<<l<<" "<<r<<" "<<k<<endl;
+                        flag = 0;
+                        break;
+                   }
+                   if(num[l] + num[r] > num[k])
+                        r--;
+                   else
+                        l++;
+              }
+         }
+         if(flag)
+              cout<<"No sequence found\n";
     }
+     return 0;
 }
