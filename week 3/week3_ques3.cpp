@@ -1,19 +1,29 @@
-#include<iostream>
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
 int main()
 {
     int t;
-    cin>>t;
+    cin >> t;
     while (t--)
     {
-        vector <int> nums;
         int n;
-        int a1;
-        for (int i=0;i<n;i++)
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++)
+            cin >> arr[i];
+        sort(arr, arr + n);
+        int i;
+        while (i < n - 1)
         {
-            cin>>a1;
-            nums.push_back(a1);
+            if (arr[i] == arr[i + 1])
+            {
+                cout << "YES" << endl;
+                break;
+            }
+            i++;
         }
+        if (i == n - 1)
+            cout << "NO" << endl;
     }
 }
